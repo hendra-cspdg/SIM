@@ -207,7 +207,7 @@ div#menu a:active{
 	background: #cde63a;
 }
 #logout{
-	float right;
+	float: right;
 	position: fixed;
 	right: 1em;
 	top: 1.2em;
