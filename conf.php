@@ -1,5 +1,5 @@
 <?php
-$homedir= "sim";  //direktori SIM
+$homedir= "SIM";  //direktori SIM
 $template="default";  //nama template
 $home_uri="http://".$_SERVER["HTTP_HOST"]."/$homedir/";  //url SIM
 $template_uri=$home_uri."templates/$template/";   //url template
