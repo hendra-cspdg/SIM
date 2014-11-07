@@ -1,0 +1,271 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+#footer {
+	margin-top: 2em;
+	text-align: center;
+	font-family: Georgia, serif;
+	font-size: 0.8em;
+	clear: both;
+}
+
+table#data{
+	border-collapse: collapse;
+	width: 100%;
+	margin: 1em 0 1em 0;
+}
+
+table#data, #data th, #data td{
+	border: 1px solid #000000;
+}
+#data th, #data td{
+	padding: .3em;
+} 
+#inlineform {
+	display: inline;
+}
+
+.oddline {
+	background-color: #e9e9e9;
+}
+
+.evenline {
+	background-color: #dddddd;
+}
+
+.tabheader {
+	background-color: #333333;
+	color: #ffffff;
+}
+
+.tabheader2 {
+	background-color: #666666;
+	color: #ffffff;
+}
+
+input#editbutton {
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/pencil.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+input#delbutton {
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/delete.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+input#year {
+	width: 3.5em;
+}
+
+input#remark {
+	width: 20em;
+}
+
+input#amount {
+	width: 7em;
+}
+
+div#login {
+	width: 27em;
+	text-align: center;
+	background: -webkit-linear-gradient(#aebd56, #7b8a23); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#aebd56, #7b8a23); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#aebd56, #7b8a23); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#aebd56, #7b8a23); /* Standard syntax */
+	padding: 1em;
+	border: 1px solid #c7bb3f;
+	border-radius: 1em;
+	margin-top: 10%;
+}
+
+div#loginlabel {
+	display: inline-block;
+	width: 4.5em;
+}
+
+div#loginform {
+	display: inline-block;
+}
+
+div#loginform input {
+	border: none;
+	width: 12em;
+	padding: 0.2em;
+}
+
+div#loginbutton {
+	display: inline-block;
+}
+
+div#loginbutton #loginsubmit {
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/door_in.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+div#loginbutton #loginreset {
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/arrow_refresh.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+#errmsg {
+	position: fixed;
+	left: 15em;
+	top: 4em;
+	border: 1px solid #000;
+	background-color: red;
+	padding: .5em;
+	color: #fff;
+	font-weight: bold;
+	z-index: -999;
+}
+#errmsg0 {
+	border: 0;
+	background-color: red;
+	padding: .5em;
+	color: #fff;
+	font-weight: bold;
+	z-index: -999;
+	width: 28em;
+	position: relative;
+	top: 7em;
+	border-radius: .3em;
+}
+div#menu ul{
+	list-style-type:none;
+	padding: .2em;
+	vertical-align: middle;
+	background: -webkit-linear-gradient(#aebd56, #7b8a23); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#aebd56, #7b8a23); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#aebd56, #7b8a23); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#aebd56, #7b8a23); /* Standard syntax */
+}
+div#menu ul li{
+	text-align: left;
+}
+div#menu #level1 li{
+	display: inline-block;
+	margin: 0;
+}
+div#menu #level2 li{
+	display: block;
+}
+div#menu #level2{
+	visibility: hidden;
+	position:  absolute;
+	float: none;
+}
+div#menu #level1 li:hover #level2{
+	visibility: visible;
+}
+div#menu a{
+	font: .9em Tahoma, Arial, sans-serif;
+	display: block;
+	width: 9em;
+	height: 1.7em;
+	padding-top:.3em;
+	text-decoration: none;
+	padding-left: .3em;
+}
+div#menu a:link{
+	color: black;
+	background: -webkit-linear-gradient(#e1f089, #aebd56); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#e1f089, #aebd56); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#e1f089, #aebd56); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#e1f089, #aebd56); /* Standard syntax */
+}
+div#menu a:visited{
+	color: black;
+	background: -webkit-linear-gradient(#e1f089, #aebd56); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#e1f089, #aebd56); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#e1f089, #aebd56); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#e1f089, #aebd56); /* Standard syntax */
+}
+div#menu a:hover{
+	color: black;
+	background: #cde63a ;
+}
+div#menu a:active{
+	color: black;
+	background: #cde63a;
+}
+#logout{
+	float right;
+	position: fixed;
+	right: 1em;
+	top: 1.2em;
+	color: #fff;
+}
+#logoutbutton {
+	padding: 5px 5px 5px 25px;
+	margin-top: .2em;
+/* 	border: 3px solid #666 ; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/door_out.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+input#savebutton{
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/disk.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+input#cancelbutton{
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/cancel.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+input#addbutton{
+	padding: 5px 5px 5px 25px;
+/* 	border: 1px solid #666; */
+	color:#000;
+	text-decoration:none;
+	background: #dcdcdc url("images/add.png") no-repeat scroll 5px center;
+	font-family: Tahoma, Arial, sans-serif;
+}
+div#content{
+	min-height: 30em;
+}
+div#inputlabel{
+	width: 10em;
+	float: left;
+	padding: .1em 0 .1em 0;
+}
+div#inputform{
+	padding: .1em 0 .1em 0;
+}
+div#dataform{
+	background: #e1f089;
+	padding: 1em;
+	width: 28em;
+	border: 1px solid #aaaaaa;
+	border-radius: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+#about p{
+	font-size: .9em;
+}
