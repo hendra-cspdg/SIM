@@ -18,7 +18,7 @@ if (isset ( $_POST ['edit'] ) && isset ( $_POST ['flow_id'] )) {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$flowsql="select * from cashflow_types";
+$flowsql="select * from cash_flow";
 $flowq=$conn->query($flowsql);
 if ($flowq->num_rows == 0) {
 	$msg = "Belum ada data!";

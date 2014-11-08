@@ -22,7 +22,7 @@ if (isset ( $_POST ['edit'] ) && isset ( $_POST ['ttype_id'] )) {
 
 
 
-$ttypesql="select type.trans_type_id as id, type.description as type_desc,flow.flow, flow.description as flow_desc from transaction_types as type left join cashflow_types as flow on type.flow=flow.flow";
+$ttypesql="select * from ttype_view";
 $ttypeq=$conn->query($ttypesql);
 if ($ttypeq->num_rows == 0) {
 	$msg = "Belum ada data!";

@@ -1,7 +1,6 @@
 <?php
-
-// function form tambah data BEGIN
-function trans_add_form($conn) {
+// form::cash::add BEGIN
+function cash_add_form($conn) {
 	?>
 <div id="dataform">
 	<form method="post">
@@ -69,7 +68,7 @@ function trans_add_form($conn) {
 </div>
 <?php
 }
-// function form tambah data END
+// form::cash::add END
 
 // function form edit data BEGIN
 function trans_edit_form($conn) {
@@ -201,9 +200,14 @@ function trans_edit($conn){
 
 
 
-// function form edit data flow BEGIN
+
+
+
+
+
+// form::cashflow::edit BEGIN
 function  flow_edit_form($conn) {
-	$editsql = "select * from cashflow_types where flow='" . $_POST ['flow_id'] . "' limit 1";
+	$editsql = "select * from cash_flow where flow='" . $_POST ['flow_id'] . "' limit 1";
 	$editres = $conn->query ( $editsql );
 	$data = $editres->fetch_assoc ();
 	?>
@@ -220,9 +224,9 @@ function  flow_edit_form($conn) {
 </div>
 <?php
 }
-// function form edit data flow END
+// form::cashflow::edit END
 
-// function form add data flow BEGIN
+// form::cashflow::add BEGIN
 function  flow_add_form($conn) {
 
 	?>
@@ -239,11 +243,11 @@ function  flow_add_form($conn) {
 </div>
 <?php
 }
-// function form add data flow END
+// form::cashflow::add END
 
-// function hapus data flow BEGIN
+// action::cashflow::del flow BEGIN
 function flow_del($conn){
-	$sql = "delete from cashflow_types where flow='".$_POST['flow_id']."'";
+	$sql = "delete from cash_flow where flow='".$_POST['flow_id']."'";
 	if ($conn->query ( $sql )) {
 		$msg = "Data dengan jenis aliran " . $_POST['flow_id'] . " telah dihapus dari basisdata";
 	} else {
@@ -251,13 +255,11 @@ function flow_del($conn){
 	}
 	return $msg;
 }
+// action::cashflow::del END
 
-// function hapus data flow END
-
-
-// Tambah data flow BEGIN
+// action::cashflow::add BEGIN
 function flow_add($conn){
-	$sql = "insert into cashflow_types(flow,description) values('".$_POST['flow']."','".$_POST['desc']."')";
+	$sql = "insert into cash_flow(flow,description) values('".$_POST['flow']."','".$_POST['desc']."')";
 	if ($conn->query ( $sql )) {
 		$msg = "Penambahan data berhasil!";
 	} else
@@ -265,11 +267,11 @@ function flow_add($conn){
 
 	return $msg;
 }
-// Tambah Data flow END
+// action::cashflow::add END
 
 // Edit data flow BEGIN
 function flow_edit($conn){
-	$sql = "update cashflow_types set flow='".$_POST['flow']."',description='".$_POST['desc']."' where flow='" . $_POST ['flow_id'] . "'";
+	$sql = "update cash_flow set flow='".$_POST['flow']."',description='".$_POST['desc']."' where flow='" . $_POST ['flow_id'] . "'";
 	if ($conn->query ( $sql )) {
 		$msg = "Pemutakhiran data berhasil!";
 	} else
@@ -278,6 +280,10 @@ function flow_edit($conn){
 	return $msg;
 }
 // Edit Data flow END
+
+
+
+
 
 // function form add data trans type BEGIN
 function  ttype_add_form($conn) {
