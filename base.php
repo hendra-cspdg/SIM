@@ -73,7 +73,7 @@ function trans_add_form($conn) {
 
 // function form edit data BEGIN
 function trans_edit_form($conn) {
-	$editsql = "select * from transactions where trans_id='" . $_POST ['trans_id'] . "' limit 1";
+	$editsql = "select * from transactions where cash_id='" . $_POST ['cash_id'] . "' limit 1";
 	$editres = $conn->query ( $editsql );
 	$data = $editres->fetch_assoc ();
 	$date = new DateTime ( $data ['day'] );
@@ -146,8 +146,8 @@ function trans_edit_form($conn) {
 		</div>
 		<div id="inputlabel">&nbsp;</div>
 		<div id="inputform">
-			<input type="hidden" name="trans_id"
-				value="<?php echo $data['trans_id']; ?>"><input type="submit"
+			<input type="hidden" name="cash_id"
+				value="<?php echo $data['cash_id']; ?>"><input type="submit"
 				value="Simpan" name="perbaiki" id="savebutton"> <input type="button" onclick="batal()" value="Batal" id="cancelbutton">
 		</div>
 	</form>
@@ -158,10 +158,10 @@ function trans_edit_form($conn) {
 
 // function hapus data BEGIN
 function trans_del($conn){
-	$trans_id = $_POST ['trans_id'];
-	$sql = "delete from transactions where trans_id='$trans_id'";
+	$cash_id = $_POST ['cash_id'];
+	$sql = "delete from transactions where cash_id='$cash_id'";
 	if ($conn->query ( $sql )) {
-		$msg = "Data dengan nomor transaksi " . $trans_id . " telah dihapus dari basisdata";
+		$msg = "Data dengan nomor transaksi " . $cash_id . " telah dihapus dari basisdata";
 	} else {
 		$msg = "Proses menghapus data gagal" . $conn->error;
 	}
@@ -189,7 +189,7 @@ function trans_add($conn){
 function trans_edit($conn){
 	$day = $_POST ['tahun'] . "-" . $_POST ['bulan'] . "-" . $_POST ['tanggal'];
 
-	$sql = "update transactions set day='$day',amount='" . $_POST ['jumlah'] . "',remarks='" . $_POST ['keterangan'] . "',trans_type='" . $_POST ['jenis'] . "',user='" . $_POST ['petugas'] . "' where trans_id='" . $_POST ['trans_id'] . "'";
+	$sql = "update transactions set day='$day',amount='" . $_POST ['jumlah'] . "',remarks='" . $_POST ['keterangan'] . "',trans_type='" . $_POST ['jenis'] . "',user='" . $_POST ['petugas'] . "' where cash_id='" . $_POST ['cash_id'] . "'";
 	if ($conn->query ( $sql )) {
 		$msg = "Pemutakhiran data berhasil!";
 	} else

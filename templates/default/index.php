@@ -17,7 +17,7 @@ function toDashboard(){
 	<div id="menu">
 		<ul id="level1">
 			<li><a href="<?php echo $home_uri; ?>home.php"><img src="<?php echo $home_uri; ?>images/house.png" height="16px" width="16px"> Beranda</a></li>
-			<li><a href="<?php echo $home; ?>cash/transaction"><img src="<?php echo $home_uri; ?>images/money.png" height="16px" width="16px"> Transaksi</a></li>
+			<li><a href="<?php echo $home; ?>cash/cash"><img src="<?php echo $home_uri; ?>images/money.png" height="16px" width="16px"> Kas</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/package.png" height="16px" width="16px"> Inventory</a>
 				<ul id="level2">
 					<li><a href="<?php echo $home; ?>inventory/"><img src="<?php echo $home_uri; ?>images/bricks.png" height="16px" width="16px"> Bahan Baku</a></li>

@@ -19,7 +19,7 @@ if (isset ( $_POST ['edit'] ) && isset ( $_POST ['trans_id'] )) {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$sql = "SELECT t.trans_id, t.amount, t.day, t.remarks, u.username, y.description FROM (transactions AS t LEFT JOIN users AS u ON t.user=u.UID) LEFT JOIN transaction_types AS y ON t.trans_type=y.trans_type_id ORDER BY trans_id DESC";
+$sql = "select * from trans_tab";
 $transq = $conn->query ( $sql );
 if ($transq->num_rows == 0) {
 	$msg = "Belum ada data!";
@@ -28,11 +28,9 @@ if ($transq->num_rows == 0) {
 <table id="data">
 	<thead>
 		<tr class="tabheader">
-			<!-- header baris pertama -->
 			<th>No<br>Urut
 			</th>
-			<th>No<br>Transaksi
-			</th>
+			<th>No<br>Transaksi</th>
 			<th>Tanggal</th>
 			<th>Jumlah</th>
 			<th>Keterangan</th>
@@ -49,7 +47,7 @@ if ($transq->num_rows == 0) {
 		?>
 		<tr class="<?php if($line & 1) {echo "oddline";} else{ echo"evenline";} ?>">
 			<td><?php echo $line;?></td>
-			<td><?php echo $transdata['trans_id'];?></td>
+			<td><?php echo $transdata['cash_id'];?></td>
 			<td><?php echo $transdata['day'];?></td>
 			<td><?php echo $transdata['amount'];?></td>
 			<td><?php echo $transdata['remarks'];?></td>
