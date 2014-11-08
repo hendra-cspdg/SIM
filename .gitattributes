@@ -20,3 +20,11 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+*.php text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.jpg binary
+*.png binary
+*.gif binary
