@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `cash_flow` (
   PRIMARY KEY (`flow`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sim.cash_flow: ~3 rows (approximately)
+-- Dumping data for table sim.cash_flow: ~2 rows (approximately)
 DELETE FROM `cash_flow`;
 /*!40000 ALTER TABLE `cash_flow` DISABLE KEYS */;
 INSERT INTO `cash_flow` (`flow`, `description`) VALUES
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Stores username informations';
 
--- Dumping data for table sim.users: ~0 rows (approximately)
+-- Dumping data for table sim.users: ~2 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`user_id`, `username`, `realname`, `password`) VALUES
