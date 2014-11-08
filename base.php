@@ -269,7 +269,7 @@ function flow_add($conn){
 }
 // action::cashflow::add END
 
-// Edit data flow BEGIN
+// action::cashflow::edit BEGIN
 function flow_edit($conn){
 	$sql = "update cash_flow set flow='".$_POST['flow']."',description='".$_POST['desc']."' where flow='" . $_POST ['flow_id'] . "'";
 	if ($conn->query ( $sql )) {
@@ -279,15 +279,15 @@ function flow_edit($conn){
 
 	return $msg;
 }
-// Edit Data flow END
+// action::cashflow::edit END
 
 
 
 
 
-// function form add data trans type BEGIN
+// form::trans_type::add BEGIN
 function  ttype_add_form($conn) {
-	$flowsql="select * from cashflow_types";
+	$flowsql="select * from cash_flow";
 	$flowres=$conn->query($flowsql);
 	
 	?>
@@ -306,8 +306,7 @@ function  ttype_add_form($conn) {
 		<div id="inputlabel">Keterangan</div>
 		<div id="inputform"><input type="text" name="desc"></div>
 		<div id="inputlabel">&nbsp;</div>
-		<div id="inputform"><input type="submit" value="Simpan" name="tambah" id="savebutton"> <input type="button" onclick="batal()" value="Batal" id="cancelbutton">
-		</div>
+		<div id="inputform"><input type="submit" value="Simpan" name="tambah" id="savebutton"> <input type="button" onclick="batal()" value="Batal" id="cancelbutton"></div>
 	</form>
 </div>
 <?php

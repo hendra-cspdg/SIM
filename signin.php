@@ -8,7 +8,7 @@ if(isset($_POST['in'])){
 	if($res->num_rows){
 		$user = $res->fetch_assoc();
 		session_start();
-		$_SESSION['uid'] = $user['UID'];
+		$_SESSION['user_id'] = $user['user_id'];
 		$_SESSION['name']=$user['realname'];
 		$_SESSION['user'] = $user['username'];
 				
