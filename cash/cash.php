@@ -1,25 +1,25 @@
 <?php
 if (isset ( $_POST ['dele'] ) && isset ( $_POST ['trans_id'] )) {   //edit data
-	$msg=trans_del($conn);
+	$msg=cash_del($conn);
 }
 if (isset ( $_POST ['tambah'] )) {   //tambah data
-	$msg=trans_add($conn);
+	$msg=cash_add($conn);
 }
 if (isset ( $_POST ['perbaiki'] )) {   /// edit data
-	$msg=trans_edit($conn);
+	$msg=cash_edit($conn);
 }
 
 
 // tampilkan form jika dibutuhkan
 if (isset ( $_POST ['edit'] ) && isset ( $_POST ['trans_id'] )) {
-	trans_edit_form($conn);
+	cash_edit_form($conn);
 } elseif (isset ( $_POST ['add'] )) {
-	trans_add_form($conn);
+	cash_add_form($conn);
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$sql = "select * from trans_tab";
+$sql = "select * from cash_view";
 $transq = $conn->query ( $sql );
 if ($transq->num_rows == 0) {
 	$msg = "Belum ada data!";
@@ -52,7 +52,7 @@ if ($transq->num_rows == 0) {
 			<td><?php echo $transdata['amount'];?></td>
 			<td><?php echo $transdata['remarks'];?></td>
 			<td><?php echo $transdata['description'];?></td>
-			<td><?php echo $transdata['username'];?></td>
+			<td><?php echo $transdata['user'];?></td>
 			<td><form method="post"><input type="hidden" name="trans_id" value="<?php echo $transdata['trans_id'];?>"><input type="submit" name="dele" value="Hapus" id="delbutton"> <input type="submit" name="edit" value="Perbaiki" id="editbutton"></form></td>
 		</tr>
 	<?php

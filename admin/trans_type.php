@@ -1,6 +1,4 @@
 <?php
-var_dump($_POST);
-
 if (isset ( $_POST ['dele'] ) && isset ( $_POST ['ttype_id'] )) {   //edit data
 	$msg=ttype_del($conn);
 }
@@ -19,9 +17,6 @@ if (isset ( $_POST ['edit'] ) && isset ( $_POST ['ttype_id'] )) {
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
-
-
-
 $ttypesql="select * from ttype_view";
 $ttypeq=$conn->query($ttypesql);
 if ($ttypeq->num_rows == 0) {
