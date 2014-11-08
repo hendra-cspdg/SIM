@@ -29,7 +29,7 @@ function toDashboard(){
 				<ul id="level2">
 					<li><a href="<?php echo $home; ?>admin/cashflow"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Aliran Kas</a></li>
 					<li><a href="<?php echo $home; ?>admin/trans_type"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Jenis Transaksi</a></li><?php 
-					if ($_SESSION['uid']=='1'){
+					if ($_SESSION['user_id']=='1'){
 						?>
 					<li><a href="<?php echo $home; ?>master/"><img src="<?php echo $home_uri; ?>images/user_gray.png" height="16px" width="16px"> Pengguna</a></li>
 						<?php 

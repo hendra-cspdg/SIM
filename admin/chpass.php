@@ -1,17 +1,8 @@
 <?php
-var_dump($_SESSION);
-echo "<br>";
-var_dump($_POST);
-echo "<br>";
-var_dump($_GET);
-echo "<br>";
-
 if (isset($_POST['change'])){
 	$currq="select * from users where user_id='".$_SESSION['user_id']."' limit 1";
 	$currres=$conn->query($currq);
 	$currdata=$currres->fetch_assoc();
-	echo md5($_POST['existingpass'])."<br>";
-	echo $currdata['password'];
 	if(md5($_POST['existingpass']) != $currdata['password']){
 		$msg="Katasandi salah!";
 	}
