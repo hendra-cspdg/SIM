@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `cash_flow` (
   PRIMARY KEY (`flow`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sim.cash_flow: ~2 rows (approximately)
+-- Dumping data for table sim.cash_flow: ~3 rows (approximately)
 DELETE FROM `cash_flow`;
 /*!40000 ALTER TABLE `cash_flow` DISABLE KEYS */;
 INSERT INTO `cash_flow` (`flow`, `description`) VALUES
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Stores username informations';
 
--- Dumping data for table sim.users: ~2 rows (approximately)
+-- Dumping data for table sim.users: ~0 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`user_id`, `username`, `realname`, `password`) VALUES
@@ -168,9 +168,9 @@ INSERT INTO `users` (`user_id`, `username`, `realname`, `password`) VALUES
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
--- Dumping structure for view sim.trans_tab
+-- Dumping structure for view sim.cash_view
 -- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `trans_tab` (
+CREATE TABLE `cash_view` (
 	`cash_id` INT(11) NOT NULL,
 	`amount` BIGINT(20) NOT NULL,
 	`day` DATE NOT NULL,
@@ -180,9 +180,9 @@ CREATE TABLE `trans_tab` (
 ) ENGINE=MyISAM;
 
 
--- Dumping structure for view sim.ttype_tab
+-- Dumping structure for view sim.ttype_view
 -- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `ttype_tab` (
+CREATE TABLE `ttype_view` (
 	`id` INT(11) NOT NULL,
 	`type_desc` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
 	`flow` VARCHAR(8) NULL COLLATE 'latin1_swedish_ci',
@@ -190,16 +190,16 @@ CREATE TABLE `ttype_tab` (
 ) ENGINE=MyISAM;
 
 
--- Dumping structure for view sim.trans_tab
+-- Dumping structure for view sim.cash_view
 -- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `trans_tab`;
-CREATE ALGORITHM=TEMPTABLE DEFINER=`sim`@`localhost` SQL SECURITY DEFINER VIEW `trans_tab` AS select `c`.`cash_id` AS `cash_id`,`c`.`amount` AS `amount`,`c`.`day` AS `day`,`c`.`remarks` AS `remarks`,`u`.`realname` AS `user`,`y`.`description` AS `description` from ((`cash` `c` left join `users` `u` on((`c`.`user` = `u`.`user_id`))) left join `transaction_types` `y` on((`c`.`trans_type` = `y`.`trans_type_id`))) order by `c`.`cash_id` desc;
+DROP TABLE IF EXISTS `cash_view`;
+CREATE ALGORITHM=TEMPTABLE DEFINER=`sim`@`localhost` SQL SECURITY DEFINER VIEW `cash_view` AS select `c`.`cash_id` AS `cash_id`,`c`.`amount` AS `amount`,`c`.`day` AS `day`,`c`.`remarks` AS `remarks`,`u`.`realname` AS `user`,`y`.`description` AS `description` from ((`cash` `c` left join `users` `u` on((`c`.`user` = `u`.`user_id`))) left join `transaction_types` `y` on((`c`.`trans_type` = `y`.`trans_type_id`))) order by `c`.`cash_id` desc;
 
 
--- Dumping structure for view sim.ttype_tab
+-- Dumping structure for view sim.ttype_view
 -- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `ttype_tab`;
-CREATE ALGORITHM=TEMPTABLE DEFINER=`sim`@`localhost` SQL SECURITY DEFINER VIEW `ttype_tab` AS select `type`.`trans_type_id` AS `id`,`type`.`description` AS `type_desc`,`flow`.`flow` AS `flow`,`flow`.`description` AS `flow_desc` from (`transaction_types` `type` left join `cash_flow` `flow` on((`type`.`flow` = `flow`.`flow`))) order by `type`.`trans_type_id`;
+DROP TABLE IF EXISTS `ttype_view`;
+CREATE ALGORITHM=TEMPTABLE DEFINER=`sim`@`localhost` SQL SECURITY DEFINER VIEW `ttype_view` AS select `type`.`trans_type_id` AS `id`,`type`.`description` AS `type_desc`,`flow`.`flow` AS `flow`,`flow`.`description` AS `flow_desc` from (`transaction_types` `type` left join `cash_flow` `flow` on((`type`.`flow` = `flow`.`flow`))) order by `type`.`trans_type_id`;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
