@@ -23,16 +23,18 @@ CREATE TABLE IF NOT EXISTS `cash` (
   KEY `trans_users_FK` (`user`),
   CONSTRAINT `trans_type_FK` FOREIGN KEY (`trans_type`) REFERENCES `transaction_types` (`trans_type_id`) ON UPDATE CASCADE,
   CONSTRAINT `trans_users_FK` FOREIGN KEY (`user`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sim.cash: ~4 rows (approximately)
+-- Dumping data for table sim.cash: ~6 rows (approximately)
 DELETE FROM `cash`;
 /*!40000 ALTER TABLE `cash` DISABLE KEYS */;
 INSERT INTO `cash` (`cash_id`, `day`, `amount`, `remarks`, `trans_type`, `user`) VALUES
 	(124, '2014-11-05', 999999999, 'xxxxxxxxxxxxx', 1, 1),
 	(125, '2014-11-05', 567848, 'ghkdhk d hk', 5, 1),
 	(127, '2014-04-05', 645684658, 'gjkgk', 1, 1),
-	(130, '2014-11-05', 457457, 'qweoqytowte', 4, 1);
+	(130, '2014-11-05', 457457, 'qweoqytowte', 4, 1),
+	(144, '2014-11-09', 34346, 'sdf', 2, 1),
+	(145, '2014-11-09', 111111, '11111', 1, 1);
 /*!40000 ALTER TABLE `cash` ENABLE KEYS */;
 
 
@@ -43,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `cash_flow` (
   PRIMARY KEY (`flow`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sim.cash_flow: ~3 rows (approximately)
+-- Dumping data for table sim.cash_flow: ~2 rows (approximately)
 DELETE FROM `cash_flow`;
 /*!40000 ALTER TABLE `cash_flow` DISABLE KEYS */;
 INSERT INTO `cash_flow` (`flow`, `description`) VALUES
@@ -136,17 +138,22 @@ CREATE TABLE IF NOT EXISTS `transaction_types` (
   PRIMARY KEY (`trans_type_id`),
   KEY `trans_type_flowtype_FK` (`flow`),
   CONSTRAINT `trans_type_flowtype_FK` FOREIGN KEY (`flow`) REFERENCES `cash_flow` (`flow`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sim.transaction_types: ~5 rows (approximately)
+-- Dumping data for table sim.transaction_types: ~10 rows (approximately)
 DELETE FROM `transaction_types`;
 /*!40000 ALTER TABLE `transaction_types` DISABLE KEYS */;
 INSERT INTO `transaction_types` (`trans_type_id`, `description`, `flow`) VALUES
-	(1, 'Penjualan tunai', 'output'),
+	(1, 'Penjualan tunai', 'input'),
 	(2, 'Pembayaran piutang dagag', 'output'),
-	(4, 'Pembelian bahan baku', 'input'),
-	(5, 'Pemeliharaan mesin', 'input'),
-	(7, 'Pembayaran gaji', 'input');
+	(4, 'Pembelian bahan baku', 'output'),
+	(5, 'Pemeliharaan mesin', 'output'),
+	(17, 'Pembelian bahan habis pakai', 'output'),
+	(18, 'Pembayaran hutang dagang', 'input'),
+	(19, 'Bunga bank', 'input'),
+	(20, 'Bunga hutang', 'output'),
+	(21, 'Transportasi', 'output'),
+	(22, 'Pembayaran gaji', 'output');
 /*!40000 ALTER TABLE `transaction_types` ENABLE KEYS */;
 
 
