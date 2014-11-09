@@ -146,10 +146,10 @@ function cash_edit_form($conn) {
 </div>
 <?php
 }
-// function form edit data END
+// form::cash::edit END
 
-// function hapus data BEGIN
-function ash_del($conn){
+// action::cash::del BEGIN
+function cash_del($conn){
 	$cash_id = $_POST ['cash_id'];
 	$sql = "delete from transactions where cash_id='$cash_id'";
 	if ($conn->query ( $sql )) {
@@ -159,8 +159,7 @@ function ash_del($conn){
 	}
 	return $msg;
 }
-	
-// function hapus data END
+// action::cash::del END
 
 // action::cash::add BEGIN
 function cash_add($conn){
@@ -177,7 +176,7 @@ function cash_add($conn){
 }
 // action::cash:add END
 
-// Edit data BEGIN
+// action::cash::edit BEGIN
 function cash_edit($conn){
 	$day = $_POST ['tahun'] . "-" . $_POST ['bulan'] . "-" . $_POST ['tanggal'];
 
@@ -189,7 +188,7 @@ function cash_edit($conn){
 	
 	return $msg;
 }
-// Edit Data END
+// action::cash::edit END
 
 
 
@@ -278,7 +277,10 @@ function flow_edit($conn){
 
 
 
-// form::trans_type::add BEGIN
+
+
+
+// form::ttype::add BEGIN
 function  ttype_add_form($conn) {
 	$flowsql="select * from cash_flow";
 	$flowres=$conn->query($flowsql);
@@ -304,20 +306,7 @@ function  ttype_add_form($conn) {
 </div>
 <?php
 }
-// function form add data trans type END
-
-
-// Tambah data flow BEGIN
-function ttype_add($conn){
-	$sql = "insert into transaction_types(flow,description) values('".$_POST['flow']."','".$_POST['desc']."')";
-	if ($conn->query ( $sql )) {
-		$msg = "Penambahan data berhasil!";
-	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
-
-	return $msg;
-}
-// Tambah Data flow END
+// form::ttype::add END
 
 // form::ttype::edit BEGIN
 function  ttype_edit_form($conn) {
@@ -328,8 +317,7 @@ function  ttype_edit_form($conn) {
 <div id="dataform">
 	<form method="post">
 		<div id="inputlabel">Aliran</div>
-		<div id="inputform">
-		<select name="flow">
+		<div id="inputform"><select name="flow">
 		<?php 
 		$flowsql="select * from cash_flow";
 		$flowres=$conn->query($flowsql);
@@ -343,20 +331,31 @@ function  ttype_edit_form($conn) {
 		?>
 		</select>
 		</div>
-		<div id="inputlabel">Keterangan</div>
-		<div id="inputform"><input type="text" name="desc" value="<?php echo $ttype['flow_desc'] ?>"></div>
+		<div id="inputlabel">Jenis transaksi</div>
+		<div id="inputform"><input type="text" name="desc" value="<?php echo $ttype['type_desc'] ?>"></div>
 		<div id="inputlabel">&nbsp;</div>
-		<div id="inputform"><input type="hidden" name="trans_type" value="<?php echo $ttype['trans_type_id'] ?>"><input type="submit" value="Simpan" name="perbaiki" id="savebutton"> <input type="button" onclick="batal()" value="Batal" id="cancelbutton">
-		</div>
+		<div id="inputform"><input type="hidden" name="trans_type" value="<?php echo $ttype['id'] ?>"><input type="submit" value="Simpan" name="perbaiki" id="savebutton"> <input type="button" onclick="batal()" value="Batal" id="cancelbutton"></div>
 	</form>
 </div>
 <?php
 }
-// function form edit data trans type END
+// form::ttype:edit END
 
-// Edit transaction type BEGIN
+// action::ttype:add BEGIN
+function ttype_add($conn){
+	$sql = "insert into transaction_types(flow,description) values('".$_POST['flow']."','".$_POST['desc']."')";
+	if ($conn->query ( $sql )) {
+		$msg = "Penambahan data berhasil!";
+	} else
+		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
+
+	return $msg;
+}
+// action::ttype:add END
+
+// action::ttype:edit BEGIN
 function ttype_edit($conn){
-	$sql = "update transaction_types set flow='".$_POST['flow']."' where trans_type_id='" . $_POST ['trans_type'] . "'";
+	$sql = "update transaction_types set flow='".$_POST['flow']."', description='".$_POST['desc']."' where trans_type_id='" . $_POST ['trans_type'] . "'";
 	if ($conn->query ( $sql )) {
 		$msg = "Pemutakhiran data berhasil!";
 	} else
@@ -364,9 +363,18 @@ function ttype_edit($conn){
 
 	return $msg;
 }
-// Edit transaction type END
+// action::ttype:edit END
+
+// action::cashflow::del flow BEGIN
+function ttype_del($conn){
+	$sql = "delete from transaction_types where trans_type_id='".$_POST['ttype_id']."'";
+	if ($conn->query ( $sql )) {
+		$msg = "Data dengan jenis aliran " . $_POST['ttype_id'] . " telah dihapus dari basisdata";
+	} else {
+		$msg = "Proses menghapus data gagal! Pesan kegagalan: " . $conn->error;
+	}
+	return $msg;
+}
+// action::cashflow::del END
 
 ?>
-
-
-
