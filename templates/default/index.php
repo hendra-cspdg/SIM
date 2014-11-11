@@ -17,7 +17,7 @@ function toDashboard(){
 	<div id="menu">
 		<ul id="level1">
 			<li><a href="<?php echo $home_uri; ?>home.php"><img src="<?php echo $home_uri; ?>images/house.png" height="16px" width="16px"> Beranda</a></li>
-			<li><a href="<?php echo $home; ?>cash/transaction"><img src="<?php echo $home_uri; ?>images/money.png" height="16px" width="16px"> Transaksi</a></li>
+			<li><a href="<?php echo $home; ?>cash/cash"><img src="<?php echo $home_uri; ?>images/money.png" height="16px" width="16px"> Kas</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/package.png" height="16px" width="16px"> Inventory</a>
 				<ul id="level2">
 					<li><a href="<?php echo $home; ?>inventory/"><img src="<?php echo $home_uri; ?>images/bricks.png" height="16px" width="16px"> Bahan Baku</a></li>
@@ -27,18 +27,19 @@ function toDashboard(){
 			<li><a href="<?php echo $home; ?>report/"><img src="<?php echo $home_uri; ?>images/report.png" height="16px" width="16px"> Laporan</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Data Master</a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>admin/flow"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Aliran Kas</a></li>
-					<li><a href="<?php echo $home; ?>admin/trans_type"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Jenis Transaksi</a></li><?php 
-					if ($_SESSION['uid']=='1'){
-						?>
-					<li><a href="<?php echo $home; ?>master/"><img src="<?php echo $home_uri; ?>images/user_gray.png" height="16px" width="16px"> Pengguna</a></li>
-						<?php 
-					}
-					?></ul>
+					<li><a href="<?php echo $home; ?>admin/cashflow"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Aliran Kas</a></li>
+					<li><a href="<?php echo $home; ?>admin/trans_type"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Jenis Transaksi</a></li>
+				</ul>
 			</li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/user.png" height="16px" width="16px"> <?php echo $_SESSION['name'];?></a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>admin/chpass"><img src="<?php echo $home_uri; ?>images/user.png" height="16px" width="16px"> Ubah Katasandi</a></li>
+					<li><a href="<?php echo $home; ?>admin/chpass"><img src="<?php echo $home_uri; ?>images/user.png" height="16px" width="16px"> Ubah Katasandi</a></li><?php 
+					if ($_SESSION['user_id']=='1'){
+						?>
+					<li><a href="<?php echo $home; ?>admin/userman"><img src="<?php echo $home_uri; ?>images/user_gray.png" height="16px" width="16px"> Manajemen Pengguna</a></li>
+						<?php 
+					}
+					?>
 					<li><form action="<?php echo $home_uri?>signin.php" method="post" id="inlineform"><input type="submit" value="Keluar" name="out" id="logoutbutton"></form></li>
 				</ul>
 			</li>
